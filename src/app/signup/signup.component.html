@@ -1,0 +1,50 @@
+<div class="container mx-auto">
+    <div class="card shadow mt-5 text-center w-50">
+        <div class="card-header">
+            <p class="display-5">Sign-Up</p>
+            <h5 *ngIf="errStatus">{{errmsg}}</h5>
+        </div>
+        <div class="card-body errorMsg">
+            <form #ref="ngForm" [formGroup]="userFormData" (submit)="onSubmit()" >
+    
+                <!-- username  -->
+                <div class="mb-3 ">
+                    <input type="text" class="form-control" placeholder="Enter Username" formControlName="username" >
+                    <!-- Error handling  -->
+                    
+                </div>
+
+                <!-- password  -->
+
+                <div class="mb-3 ">
+                    <input type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                    <!-- Error handling  -->
+            
+                </div>
+
+                 <!-- email  -->
+                 <div class="mb-3 ">
+                    <input type="email" class="form-control" placeholder="Enter Email" formControlName="email">
+                    <!-- Error handling  -->
+                </div>
+
+                <!-- email  -->
+                <div class="mb-3 ">
+                    <input type="text" class="form-control" placeholder="Enter City" formControlName="city">
+                    <!-- Error handling  -->
+                </div>
+
+                <!-- profile pic   -->
+                <div class="mb-3 ">
+                    <input type="file" class="form-control" id="profilePic" (change)="onFileSelect($event)" formControlName="profilePic">
+                    <!-- Error handling  -->
+                </div>
+
+                <button type="submit" class="btn btn-primary me-3">Sign-Up</button>
+
+                <p class="lead text-center fw-bold">New User? <a routerLink="/login">Login</a> here</p>
+            </form>
+        </div>
+    </div>
+
+</div>

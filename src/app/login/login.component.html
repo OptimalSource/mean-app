@@ -1,0 +1,69 @@
+<div class="container mx-auto">
+    <div class="card shadow mt-5 text-center w-50">
+        <div class="card-header">
+            <p class="display-5">Login</p>
+            <h5 *ngIf="errStatus">{{errmsg}}</h5>
+        </div>
+        <div class="card-body errorMsg">
+            <form #ref="ngForm" [formGroup]="userCredential" (submit)="onsubmit()" >
+                <!-- radio button for admin and user  -->
+                <div class="mb-3">
+                    <input type="radio" value="user" class="form-check-input" formControlName="usertype"> User
+                    <input type="radio" value="admin" class="form-check-input" formControlName="usertype"> Admin
+
+                    <!-- Error handling  -->
+                    <div *ngIf="userType.invalid&&(userType.dirty || userType.touched )||ref.submitted"
+                        class="text-danger">
+
+                        <p *ngIf="userType.errors?.['required']">
+                            *Please Select User Type
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <!-- username  -->
+                <div class="mb-3 ">
+                    <input type="text" class="form-control" placeholder="Enter Username" formControlName="username" >
+                    <!-- Error handling  -->
+                    <div *ngIf="userName.invalid&&(userName.dirty || userName.touched )||ref.submitted"
+                        class="text-danger">
+
+                        <p *ngIf="userName.errors?.['required']">
+                            *Please enter the Username Name
+                        </p>
+                        <!-- min and max length error  -->
+                        <!-- <p *ngIf="userName.errors?.['minlength'] || userName.errors?.['maxlength']">
+                            *Accepts Alphabets, space & Min 5 to Max 30 Char
+                        </p> -->
+                    </div>
+                </div>
+
+                <!-- password  -->
+
+                <div class="mb-3 ">
+                    <input type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                    <!-- Error handling  -->
+                    <div *ngIf="password.invalid&&(password.dirty || password.touched )||ref.submitted"
+                        class="text-danger" >
+
+                        <p *ngIf="password.errors?.['required']">
+                            *Please enter the password
+                        </p>
+
+                        <!-- <p *ngIf="password.errors?.['pattern']">
+                            *Atleast 1 Number, 1 Special, lowercase and UpperCase charactor required
+                        </p> -->
+
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary me-3">Login</button>
+
+                <p class="lead text-center fw-bold">New User? <a routerLink="/signup">SignUp</a> here</p>
+            </form>
+        </div>
+    </div>
+
+</div>
